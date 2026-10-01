@@ -72,9 +72,16 @@ band-app/
 ### 关键字段要点说明：
 1. **`deviceTypeList`**：必须显式声明包含 `"watch"`，否则手环系统包管理器可能拒绝安装。
 2. **`designWidth`（设计宽度）**：
-   - 对于小米手环 9 Pro / 8 Pro，必须设为 **`336`**。
+   - 对于**小米手环 9 Pro / 8 Pro**，必须设为 **`336`**。
+   - 对于**小米手环 9 标准版**，必须设为 **`192`**。
    - 所有在 CSS 中编写的 `px` 单位将 1:1 映射至手环物理像素，杜绝任何缩放插值导致的字体模糊。
-3. **`features`（系统模块授权）**：未在此处声明的系统模块，在代码中通过 `import ... from '@system.xxx'` 引入时会直接抛出 `undefined` 或调用静默失效。
+3. **`features`（系统模块授权）**：未在此处声明的系统模块，在代码中通过 `import ... from '@system.xxx'` 引入时会直接抛出 `undefined` 或调用静默失效。常用系统模块包括：
+   - `system.storage`（数据持久化存盘）
+   - `system.vibrator`（马达短震动触觉反馈）
+   - `system.router`（页面路由与退出拦截）
+   - `system.app`（读取应用信息与退出应用）
+   - `system.device`（读取设备型号、平台与屏幕物理信息）
+   - `system.sensor`（读取传感器/加速度计/计步器等）
 
 ---
 
